@@ -1,1 +1,1 @@
-mcp-jxnum-00: node server.js
+mcp-jxnum-99: node server.js
