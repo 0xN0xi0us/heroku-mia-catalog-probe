@@ -2,7 +2,7 @@
 
 const readline = require("node:readline");
 
-const TOOL_COUNT = 8;
+const TOOL_COUNT = 64;
 const ENUM_COUNT_PER_TOOL = 480;
 const ENUM_VALUE_BYTES = 96;
 
@@ -28,7 +28,7 @@ function inputSchema(toolIndex) {
 }
 
 const tools = Array.from({ length: TOOL_COUNT }, (_, toolIndex) => ({
-  name: `jxscout_catalog_${String(toolIndex).padStart(2, "0")}`,
+  name: `jxscout_catalog_${String(toolIndex).padStart(3, "0")}`,
   description: "x",
   inputSchema: inputSchema(toolIndex),
 }));

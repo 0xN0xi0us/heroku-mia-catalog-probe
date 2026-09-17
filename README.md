@@ -1,6 +1,6 @@
 # Bounded MCP catalog-schema probe
 
-This fixture exposes exactly one MCP process and eight tools. Every tool has a
+This fixture exposes exactly one MCP process and 64 tools. Every tool has a
 one-byte description and a deterministic valid JSON Schema containing 480
 fixed-width enum values. Each individual schema remains below Heroku's observed
 51,200-byte per-tool limit. It exists to determine whether Managed Inference
@@ -9,7 +9,7 @@ unpaginated `GET /v1/mcp/servers` response.
 
 Safety properties:
 
-- One initial `tools/list` page, eight tools, and no pagination.
+- One initial `tools/list` page, 64 tools, and no pagination.
 - No networking, filesystem access, child processes, timers, or retries.
 - Every `tools/call` returns one short fixed marker.
 - The generated schemas are hard-coded and cannot be enlarged by input or
