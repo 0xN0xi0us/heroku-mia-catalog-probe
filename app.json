@@ -1,0 +1,7 @@
+{
+  "name": "Heroku MCP Catalog Numeric Canonicalization PoC",
+  "description": "Bounded MCP catalog proof of concept for authorized security testing.",
+  "repository": "https://github.com/0xN0xi0us/heroku-mia-catalog-probe",
+  "keywords": ["heroku", "mcp", "security-testing"],
+  "stack": "heroku-24"
+}

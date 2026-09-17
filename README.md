@@ -1,20 +1,21 @@
-# Bounded MCP catalog-schema probe
+# MCP catalog numeric canonicalization probe
 
-The deployed cleanup state exposes exactly one MCP process with one tool. The
-bounded historical commits used ten MCP process types with 50 tools each. Every
-tool has a one-byte description and a deterministic valid JSON Schema containing
-480 fixed-width enum values. Each individual schema remains below Heroku's
-observed 51,200-byte per-tool limit. It exists to determine whether Managed
-Inference enforces an aggregate bound across registered MCP servers before
-returning all schemas through the unpaginated `GET /v1/mcp/servers` response.
+This authorized-testing fixture exposes ten MCP process types with ten tools
+each. Every tool has a one-byte description and a deterministic input schema
+containing 7,296 copies of the JSON number `1e-323`. The source schema is 51,191
+bytes, or 51,193 bytes with the empty annotations object, below the observed
+51,200-byte per-tool limit.
+
+Heroku storage canonicalizes each six-byte exponent into a much longer decimal
+representation. The fixture exists to reproduce the resulting catalog response
+amplification and resource-level availability failure.
 
 Safety properties:
 
-- One initial `tools/list` page and one tool in the cleanup state, with no
-  pagination.
+- One initial `tools/list` page and ten tools per process, with no pagination.
 - No networking, filesystem access, child processes, timers, or retries.
 - Every `tools/call` returns one short fixed marker.
 - The generated schemas are hard-coded and cannot be enlarged by input or
   environment variables.
-- Live catalog clients must enforce a 1 MiB response cap and a 10-second
-  timeout.
+- Make only one catalog request at concurrency one with a 260 MiB hard cap and
+  a 60-second timeout.
