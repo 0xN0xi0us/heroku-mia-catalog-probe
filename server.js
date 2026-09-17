@@ -2,7 +2,7 @@
 
 const readline = require("node:readline");
 
-const TOOL_COUNT = 1;
+const TOOL_COUNT = 50;
 const ENUM_COUNT_PER_TOOL = 480;
 const ENUM_VALUE_BYTES = 96;
 

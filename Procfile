@@ -1,1 +1,10 @@
-mcp-jxscout-clean: node server.js
+mcp-jxscout-half-00: node server.js
+mcp-jxscout-half-01: node server.js
+mcp-jxscout-half-02: node server.js
+mcp-jxscout-half-03: node server.js
+mcp-jxscout-half-04: node server.js
+mcp-jxscout-half-05: node server.js
+mcp-jxscout-half-06: node server.js
+mcp-jxscout-half-07: node server.js
+mcp-jxscout-half-08: node server.js
+mcp-jxscout-half-09: node server.js
