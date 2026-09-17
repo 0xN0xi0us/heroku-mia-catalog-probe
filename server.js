@@ -2,24 +2,15 @@
 
 const readline = require("node:readline");
 
-const TOOL_COUNT = 50;
-const ENUM_COUNT_PER_TOOL = 480;
-const ENUM_VALUE_BYTES = 96;
+const TOOL_COUNT = 1;
 
-function enumValue(toolIndex, valueIndex) {
-  const prefix = `t${String(toolIndex).padStart(2, "0")}-v${String(valueIndex).padStart(4, "0")}-`;
-  return `${prefix}${"x".repeat(ENUM_VALUE_BYTES - prefix.length)}`;
-}
-
-function inputSchema(toolIndex) {
+function inputSchema() {
   return {
     type: "object",
     properties: {
       choice: {
-        type: "string",
-        enum: Array.from({ length: ENUM_COUNT_PER_TOOL }, (_, valueIndex) =>
-          enumValue(toolIndex, valueIndex),
-        ),
+        type: "number",
+        enum: [1e-323],
       },
     },
     required: ["choice"],
@@ -30,7 +21,7 @@ function inputSchema(toolIndex) {
 const tools = Array.from({ length: TOOL_COUNT }, (_, toolIndex) => ({
   name: `jxscout_catalog_${String(toolIndex).padStart(3, "0")}`,
   description: "x",
-  inputSchema: inputSchema(toolIndex),
+  inputSchema: inputSchema(),
 }));
 
 const rl = readline.createInterface({

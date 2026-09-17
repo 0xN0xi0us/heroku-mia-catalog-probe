@@ -1,10 +1,1 @@
-mcp-jxc09-00: node server.js
-mcp-jxc09-01: node server.js
-mcp-jxc09-02: node server.js
-mcp-jxc09-03: node server.js
-mcp-jxc09-04: node server.js
-mcp-jxc09-05: node server.js
-mcp-jxc09-06: node server.js
-mcp-jxc09-07: node server.js
-mcp-jxc09-08: node server.js
-mcp-jxc09-09: node server.js
+mcp-jxnum-00: node server.js
