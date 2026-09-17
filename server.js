@@ -2,7 +2,8 @@
 
 const readline = require("node:readline");
 
-const TOOL_COUNT = 1;
+const TOOL_COUNT = 100;
+const ENUM_COUNT_PER_TOOL = 7296;
 
 function inputSchema() {
   return {
@@ -10,7 +11,7 @@ function inputSchema() {
     properties: {
       choice: {
         type: "number",
-        enum: [1e-323],
+        enum: Array.from({ length: ENUM_COUNT_PER_TOOL }, () => 1e-323),
       },
     },
     required: ["choice"],
