@@ -2,7 +2,7 @@
 
 const readline = require("node:readline");
 
-const TOOL_COUNT = 100;
+const TOOL_COUNT = 10;
 const ENUM_COUNT_PER_TOOL = 7296;
 
 function inputSchema() {
