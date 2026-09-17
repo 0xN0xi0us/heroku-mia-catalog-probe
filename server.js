@@ -2,31 +2,36 @@
 
 const readline = require("node:readline");
 
-const ENUM_COUNT = 2048;
+const TOOL_COUNT = 8;
+const ENUM_COUNT_PER_TOOL = 480;
 const ENUM_VALUE_BYTES = 96;
 
-function enumValue(index) {
-  const prefix = `v${String(index).padStart(5, "0")}-`;
+function enumValue(toolIndex, valueIndex) {
+  const prefix = `t${String(toolIndex).padStart(2, "0")}-v${String(valueIndex).padStart(4, "0")}-`;
   return `${prefix}${"x".repeat(ENUM_VALUE_BYTES - prefix.length)}`;
 }
 
-const inputSchema = {
-  type: "object",
-  properties: {
-    choice: {
-      type: "string",
-      enum: Array.from({ length: ENUM_COUNT }, (_, index) => enumValue(index)),
+function inputSchema(toolIndex) {
+  return {
+    type: "object",
+    properties: {
+      choice: {
+        type: "string",
+        enum: Array.from({ length: ENUM_COUNT_PER_TOOL }, (_, valueIndex) =>
+          enumValue(toolIndex, valueIndex),
+        ),
+      },
     },
-  },
-  required: ["choice"],
-  additionalProperties: false,
-};
+    required: ["choice"],
+    additionalProperties: false,
+  };
+}
 
-const tool = {
-  name: "jxscout_catalog_schema",
+const tools = Array.from({ length: TOOL_COUNT }, (_, toolIndex) => ({
+  name: `jxscout_catalog_${String(toolIndex).padStart(2, "0")}`,
   description: "x",
-  inputSchema,
-};
+  inputSchema: inputSchema(toolIndex),
+}));
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -58,7 +63,7 @@ function handle(request) {
     send({
       jsonrpc: "2.0",
       id: request.id,
-      result: { tools: [tool] },
+      result: { tools },
     });
     return;
   }
