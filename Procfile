@@ -1,2 +1,10 @@
-mcp-jxscout-catalog-a: node server.js
-mcp-jxscout-catalog-b: node server.js
+mcp-jxscout-catalog-00: node server.js
+mcp-jxscout-catalog-01: node server.js
+mcp-jxscout-catalog-02: node server.js
+mcp-jxscout-catalog-03: node server.js
+mcp-jxscout-catalog-04: node server.js
+mcp-jxscout-catalog-05: node server.js
+mcp-jxscout-catalog-06: node server.js
+mcp-jxscout-catalog-07: node server.js
+mcp-jxscout-catalog-08: node server.js
+mcp-jxscout-catalog-09: node server.js
