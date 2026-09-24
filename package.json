@@ -1,8 +1,11 @@
 {
-  "name": "jxscout-mcp-catalog-probe",
+  "name": "jxscout-heroku-ci-status-order-race",
   "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "24.x"
+  },
+  "scripts": {
+    "test": "node test.js"
   }
 }
